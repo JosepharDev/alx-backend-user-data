@@ -7,13 +7,15 @@ from fnmatch import fnmatch
 
 
 class Auth:
+    """Authentication class.
+    """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
             check path if exist in excluded_paths
         """
         if path is None:
             return True
-        if excluded_paths in None or not excluded_paths:
+        if excluded_paths is None or not excluded_paths:
             return True
         for pt in excluded_paths:
             if fnmatch(path, pt):
